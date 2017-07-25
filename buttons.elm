@@ -1,4 +1,4 @@
-import Html exposing (beginnerProgram, div, button, text)
+import Html exposing (beginnerProgram, div, button, text, br)
 import Html.Events exposing (onClick)
 
 main : Program Never number Msg
@@ -11,9 +11,11 @@ view model =
     [ button [ onClick Decrement ] [ text "-" ]
     , div [] [ text (toString model) ]
     , button [ onClick Increment ] [ text "+" ]
+    , br [] []
+    , button [ onClick Reset ] [ text "Reset" ]
     ]
 
-type Msg = Increment | Decrement
+type Msg = Increment | Decrement | Reset
 
 update : Msg -> number -> number
 update msg model =
@@ -23,3 +25,6 @@ update msg model =
 
     Decrement ->
       model - 1
+
+    Reset ->
+      0
